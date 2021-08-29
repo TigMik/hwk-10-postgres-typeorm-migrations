@@ -1,0 +1,38 @@
+version: '3.6'
+
+services: 
+    app:
+        build: 
+            context: .
+        restart: always
+        ports:
+            - "3000:3000"
+        depends_on: 
+            - db
+        container_name: app
+        volumes:
+            - ./:/app
+        networks:
+            db-app:
+                aliases:
+                    - app
+    db: 
+        image: postgres
+        restart: always
+        volumes:
+            - ./postgresql-db:/var/lib/postgres
+        ports: 
+            - "5432:5432"
+        env_file:
+            - database.env # configure postgres
+        networks:
+            db-app:
+                aliases:
+                    - db
+
+networks:
+    db-app:
+        external: false
+
+
+

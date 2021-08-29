@@ -1,0 +1,19 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "hwk_user",
+    "password": "hwk_password",
+    "database": "hwk_database",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+        "src/entity/*.ts"
+    ],
+    "migrations": [
+        "src/migration/*.ts"
+    ],
+    "subscribers": [
+        "src/subscriber/*.ts"
+    ]
+}
